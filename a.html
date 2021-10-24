@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+
+<body>
+<div id="app"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
+</html>
+<script>
+let url = window.location.search
+url = url.replace(/^\?/, '')
+<!-- alert(url) -->
+console.log(url)
+
+let arr = url.split('=')
+eval('var ' + arr[0] + ' = "' + arr[1] + '"')
+<!-- alert('page=' + page); -->
+
+
+if (page == "A") {
+    setTimeout(async () => {
+        await $.get("script.js", function(txt) {
+            console.log(txt)
+            eval(txt)
+        });
+        
+        $('#app').empty().html(s_html);
+        aaa();
+    }, 0)
+} if (page == "B") {
+    setTimeout(async () => {
+        await $.get("scriptB.js", function(txt) {
+            console.log(txt)
+            eval(txt)
+        });
+        
+        $('#app').empty().html(s_html);
+        aaa();
+    }, 0)
+}
+</script>
